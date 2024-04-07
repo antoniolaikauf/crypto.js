@@ -49,6 +49,8 @@ export default {
     this.salt=this.salt.toString(cryptoJs.enc.Hex)
     console.log(this.hexString);
     console.log(this.salt);
+ 
+
   },
 };
 </script>
@@ -73,10 +75,11 @@ export default {
          </li>
         <li>
           ora pr quanto riguarda riguarda la generazione della <b> key</b> prima bisogna passargli la password come input in questo caso scegliamo 'ciao', il secondo parametro è il  <b>salt</b> cosi che anche se la password rimane ciao l'output della key 
-          sarà sempre diverso il terzo parametro è la <b> keysize</b> che gestisce i bit della key generata, la lunghezza di bit del  metodo PBKDF2 deve essere in base all'algroitmo dove la vuoi inserire  es. con AES usi una key lunga 128/192/256 nel DES 64 3DES 168.
+          sarà sempre diverso il terzo parametro è la <b> keysize/keylen</b> che gestisce i bit della key generata, la lunghezza di bit del  metodo PBKDF2 deve essere in base all'algroitmo dove la vuoi inserire  es. con AES usi una key lunga 128/192/256 nel DES 64 3DES 168.
           da quello che ho visto online le word all'interno dell'array sono sempre 8 anche se teoricamente dovrebbero essere 4 essendo che 128/32 fa 4 ogni parola all'interno dell'array words è composta da 32 bits  , un altra cosa importante è il <b>sigBytes</b> essendo che ci  dice 
           quanti byte ha la key nel caso che abbiamo fatto è  16 perche 16 * 8 fa 128 bitsche sarebbero la lunghezza della key. Se si mettesse es 128/16 la quantità  delle word nell'array words non cambia rimane 8 ma nel <b>sigBytes</b> cambia a 32 e risulta sbagliato teoricamente 
-          essendo che 32 bytes  * 8 fa 256 bits e quindi va oltre la lunghezza della key ( non so se è una cosa di crypto.js e sistema sta cosa o sono io che ho cercato male su internet e sigBytes non si riferisce alla lunghezza della key) , <b>il contenuto all'interno dell'array words sarebbe la key generata</b> 
+          essendo che 32 bytes  * 8 fa 256 bits e quindi va oltre la lunghezza della key ( non so se è una cosa di crypto.js e sistema sta cosa o sono io che ho cercato male su internet e sigBytes non si riferisce alla lunghezza della key) , <b>il contenuto all'interno dell'array words sarebbe la key generata</b>
+          <b>l'iterazione</b> specifica il numero di volte che la funzione di derivazione della chiave viene eseguita. L'uso di molteplici iterazioni serve a rendere il processo di derivazione della chiave più resistente contro attacchi di forza bruta 
          <br>  questo è il risultato della key con lunghezza 128 bits per usare in un AES {{ hexString }}
         </li>
       </ol>
