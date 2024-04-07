@@ -60,6 +60,12 @@ export default {
   <h3>
     spero che questa documentazione sia utile essedno che sto iniziando a imparare della crittografia e ho trovato poco utile la documentazione di
     crypto.js (mette li del codice ma non ti spiega molto bene)
+  <div>
+    <a href="https://cryptojs.gitbook.io/docs#pbkdf2"> questo è il link per la documentazioe</a>
+    https://cryptojs.gitbook.io/docs#pbkdf2 <br>
+    <a href="https://nodejs.org/api/crypto.html">altro link</a>
+     https://nodejs.org/api/crypto.html
+  </div>
   </h3>
   <div>
     <h3>generazione della key</h3>
