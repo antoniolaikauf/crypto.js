@@ -89,6 +89,7 @@ export default {
          <br>  questo è il risultato della key con lunghezza 128 bits per usare in un AES {{ hexString }}
         </li>
       </ol>
+      un link dove spiega un po il PBKDF2 <a href="https://github.com/johanns/crypto-js/issues/101">link github</a>
     </p>
   </div>
   <form action="" @submit.prevent="trasform">
