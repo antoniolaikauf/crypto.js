@@ -1,17 +1,19 @@
-<script >
-import componentCrypto from './components/ComponentCrypto.vue';
+<script>
+import componentCrypto from "./components/ComponentCrypto.vue";
 
 export default {
   components: {
-    componentCrypto
-  }
-}
+    componentCrypto,
+  },
+};
 </script>
 
 <template>
   <componentCrypto />
 </template>
 
-<style scoped>
-
+<style>
+* {
+  font-family: "Courier New", Courier, monospace;
+}
 </style>
