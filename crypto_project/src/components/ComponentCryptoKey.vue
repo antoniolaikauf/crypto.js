@@ -15,23 +15,25 @@ export default {
     };
   },
   methods: {
+    // metodo per ora commentato 
     trasform() {
       // ogni words rappresenta 32 bits
       // stringbits  prende i primi 16 bytes dall'array words quindi le prime 4 parole in array words
       // il salt rappresenterebbe la randomicità cosi che la key anche con lo stesso input l'output di key128bits sarà sempre diverso
-      var salt1 = CryptoJS.lib.WordArray.random(128 / 8);
-      var key128Bits = CryptoJS.PBKDF2(this.key, salt1, {
-        keySize: 128 / 32,
-      });
-      console.log(key128Bits.toString());
-      console.log(key128Bits);
-      // cipher AES E usa CBC come defaul value
-      this.message_encrypted = CryptoJs.AES.encrypt(this.message, key128Bits.toString());
-      // cipher AES D
-      this.message_decropted = CryptoJS.AES.decrypt(this.message_encrypted, key128Bits.toString());
-      console.log(this.message_encrypted);
-      console.log(this.message_decropted.toString(cryptoJs.enc.Utf8));
-      console.log(this.message_encrypted.toString());
+      // var salt1 = CryptoJS.lib.WordArray.random(128 / 8);
+      // var key128Bits = CryptoJS.PBKDF2(this.key, salt1, {
+      //   keySize: 128 / 32,
+      // });
+      // console.log(key128Bits.toString());
+      // console.log(key128Bits);
+      // // CIPHER COMMENTATO
+      // // cipher AES E usa CBC come defaul value
+      // this.message_encrypted = CryptoJS.AES.encrypt(this.message, key128Bits.toString());
+      // // cipher AES D
+      // this.message_decropted = CryptoJS.AES.decrypt(this.message_encrypted, key128Bits.toString());
+      // console.log(this.message_encrypted);
+      // console.log(this.message_decropted.toString(CryptoJS.enc.Utf8));
+      // console.log(this.message_encrypted.toString());
     },
   },
   mounted() {
@@ -40,14 +42,14 @@ export default {
     // nell'array words ci saranno 6 stringhe di numeri interi questo è dato da 192/32 se ce ne sono di piu è perchè potrebbero venire aggiunte
     // le word sono usate per manipolare i dati di input e produrre output sicuri.
     // il salt usato per radomicità  cosi che anche se input rimane lo stesso l'output sarà sempre diverso
-    this.salt = CryptoJS.lib.WordArray.random(128 / 8);
-    this.hexString = CryptoJS.PBKDF2("ciao", this.salt, { keySize: 128 / 32 });
+    // this.salt = CryptoJS.lib.WordArray.random(128 / 8);
+    // this.hexString = CryptoJS.PBKDF2("ciao", this.salt, { keySize: 128 / 32 });
 
-    // Converti l'output in una stringa esadecimale
-    this.hexString = this.hexString.toString(CryptoJS.enc.Hex);
-    this.salt=this.salt.toString(CryptoJS.enc.Hex)
-    console.log(this.hexString);
-    console.log(this.salt);
+    // console.log(this.hexString);
+    // // Converti l'output in una stringa esadecimale
+    // this.hexString = this.hexString.toString(CryptoJS.enc.Hex);
+    // this.salt=this.salt.toString(CryptoJS.enc.Hex)
+    // console.log(this.salt);
  
 
   },
@@ -55,15 +57,17 @@ export default {
 </script>
 
 <template>
-  <h1>documentazione di crypto.js</h1>
+  <section>
+    <h1>documentazione di crypto.js</h1>
   <h3>
     spero che questa documentazione sia utile essedno che sto iniziando a imparare della crittografia e ho trovato poco utile la documentazione di
     crypto.js (mette li del codice ma non ti spiega molto bene)
   <div>
-    <a href="https://cryptojs.gitbook.io/docs#pbkdf2"> questo è il link per la documentazioe</a>
+    <a href="https://cryptojs.gitbook.io/docs#pbkdf2"> questo è il link per la documentazione</a>
     https://cryptojs.gitbook.io/docs#pbkdf2 <br>
     <a href="https://nodejs.org/api/crypto.html">altro link</a>
-     https://nodejs.org/api/crypto.html
+     https://nodejs.org/api/crypto.html <br>
+     un link dove spiega un po il PBKDF2 <a href="https://github.com/johanns/crypto-js/issues/101">link github</a> https://github.com/johanns/crypto-js/issues/101
   </div>
   </h3>
   <div>
@@ -88,10 +92,9 @@ export default {
          <br>  questo è il risultato della key con lunghezza 128 bits per usare in un AES {{ hexString }}
         </li>
       </ol>
-      un link dove spiega un po il PBKDF2 <a href="https://github.com/johanns/crypto-js/issues/101">link github</a>
     </p>
   </div>
-  <form action="" @submit.prevent="trasform">
+  <!-- <form action="" @submit.prevent="trasform">
     <div>
       <input type="text" v-model="message" />
     </div>
@@ -111,8 +114,8 @@ export default {
   </div>
   <div>
     {{ message_encrypted }}
-  </div>
-  lavoro in corso
+  </div> -->
+  </section>
 </template>
 
 <style scoped>
