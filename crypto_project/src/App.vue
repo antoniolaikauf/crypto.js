@@ -1,15 +1,15 @@
 <script>
-import componentCrypto from "./components/ComponentCrypto.vue";
+import componentCrypto_key from "./components/ComponentCrypto.vue";
 
 export default {
   components: {
-    componentCrypto,
+    componentCrypto_key,
   },
 };
 </script>
 
 <template>
-  <componentCrypto />
+  <componentCrypto_key />
 </template>
 
 <style>

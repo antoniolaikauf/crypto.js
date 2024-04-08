@@ -1,8 +1,7 @@
 <script>
-import cryptoJs from "crypto-js";
-import CryptoJS from "crypto-js";
+import CryptoJS from 'crypto-js';
 export default {
-  name: "componentCrypto",
+  name: "componentCrypto_key",
   data() {
     return {
       message: "",
@@ -27,7 +26,7 @@ export default {
       console.log(key128Bits.toString());
       console.log(key128Bits);
       // cipher AES E usa CBC come defaul value
-      this.message_encrypted = cryptoJs.AES.encrypt(this.message, key128Bits.toString());
+      this.message_encrypted = CryptoJs.AES.encrypt(this.message, key128Bits.toString());
       // cipher AES D
       this.message_decropted = CryptoJS.AES.decrypt(this.message_encrypted, key128Bits.toString());
       console.log(this.message_encrypted);
@@ -46,7 +45,7 @@ export default {
 
     // Converti l'output in una stringa esadecimale
     this.hexString = this.hexString.toString(CryptoJS.enc.Hex);
-    this.salt=this.salt.toString(cryptoJs.enc.Hex)
+    this.salt=this.salt.toString(CryptoJS.enc.Hex)
     console.log(this.hexString);
     console.log(this.salt);
  
