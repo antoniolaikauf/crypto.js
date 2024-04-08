@@ -11,9 +11,11 @@ export default {
 </script>
 
 <template>
-  lavoro in corso
-  <componentCrypto_key />
-  <componentCrypto_cipher />
+  <div style="position: relative">
+    lavoro in corso
+    <componentCrypto_key />
+    <componentCrypto_cipher />
+  </div>
 </template>
 
 <style>

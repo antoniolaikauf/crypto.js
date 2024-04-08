@@ -7,7 +7,17 @@ export default {
       algoritmi: [" AES ", " DES ", " TripleDES ", " Rabbit ", " RC4 ", " RC4Drop "],
       salt: "",
       hexString: "",
+      selected: false,
     };
+  },
+  methods: {
+    selected_img() {
+      if (this.selected) {
+        this.selected = false;
+      } else {
+        this.selected = true;
+      }
+    },
   },
   mounted() {
     this.salt = CryptoJS.lib.WordArray.random(128 / 8);
@@ -43,7 +53,7 @@ export default {
       var encrypted = CryptoJS.AES.encrypt("Message", "Secret Passphrase"); <br />
       var decrypted = CryptoJS.AES.decrypt(encrypted, "Secret Passphrase"); <br />
       <a href="https://github.com/mpetersen/aes-example/blob/master/README.md">link per AES</a> PS inoltre qua spiega anche la parte della key divisa
-     <ol>
+      <ol>
         <li>
             <b> messaggio</b> consiste nel testo che si vuole cifrare e nel es sopra sarebbe il Message qua la lunghezza del messaggio è di 128
             bit 16 byte se il messaggio è piu lungo di 128 viene diviso in base a quanti bit ha , se il messaggio è troppo corto gli viene aggiunto il
@@ -81,14 +91,28 @@ export default {
             <b>salt</b> sarebbe altra randomicità aggiunta alla key in modo tale che anche se si usa la stessa la stessa key non ritornerà los stesso output
             PS( non ho ancora capito perche viene aggiunto qua forse per precauzione che nella creazione della key non venga aggiunto)
         </li>
-     </ol>
+     </ol> 
      <p>
         <b>NOTA BENE </b> all'interno di key dentro al cipher si vede che la key venga aumentata questo perche nei cifrari di blocco come l'AES la key
         viene espansa im modo tale che ad ogni round si usi una key diversa ( probabilmente quel salt viene usato per queste key) quindi compare che è
         lunga 384 bits essendo che ogni word ha 32 bit e ne sono 12 quindi da euesto si deduce che ci siano 12 round della function round
-     </p>
+        <img src="../../public/img/key_img.png" alt="" @click="selected_img" :class="selected ? 'img_big' : 'img_key'" />
+    </p>
     </p>
   </section>
 </template>
 
-<style scoped></style>
+<style scoped>
+.img_key {
+  width: 100px;
+  
+}
+.img_big {
+  position: absolute;
+  width: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid black;
+}
+</style>
