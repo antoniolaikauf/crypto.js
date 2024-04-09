@@ -61,13 +61,12 @@ export default {
     <h1>documentazione di crypto.js</h1>
   <h3>
     spero che questa documentazione sia utile essedno che sto iniziando a imparare della crittografia e ho trovato poco utile la documentazione di
-    crypto.js (mette li del codice ma non ti spiega molto bene)
+    crypto.js . Il comando per istallare é questo npm install crypto-js e deve essere lanciato nel terminale 
   <div>
     <a href="https://cryptojs.gitbook.io/docs#pbkdf2"> questo è il link per la documentazione</a>
     https://cryptojs.gitbook.io/docs#pbkdf2 <br>
     <a href="https://nodejs.org/api/crypto.html">altro link</a>
-     https://nodejs.org/api/crypto.html <br>
-     un link dove spiega un po il PBKDF2 <a href="https://github.com/johanns/crypto-js/issues/101">link github</a> https://github.com/johanns/crypto-js/issues/101
+     https://nodejs.org/api/crypto.html 
   </div>
   </h3>
   <div>
@@ -76,7 +75,7 @@ export default {
       var salt = CryptoJS.lib.WordArray.random(128 / 8); <br> var key128Bits = CryptoJS.PBKDF2("Secret Passphrase", salt, { keySize: 128 / 32 });<br> var
       key256Bits = CryptoJS.PBKDF2("Secret Passphrase", salt, { keySize: 256 / 32 }); <br> var key512Bits = CryptoJS.PBKDF2("Secret Passphrase", salt, {
       keySize: 512 / 32 }); <br> var key512Bits1000Iterations = CryptoJS.PBKDF2("Secret Passphrase", salt, { keySize: 512 / 32, iterations: 1000 }); <br>
-      sulla documentazione c'è scritto questo con poco testo che descrie cosa succede. <br>
+      sulla documentazione c'è scritto questo con poco testo che descrie cosa succede. <br> un link dove spiega un po il PBKDF2 <a href="https://github.com/johanns/crypto-js/issues/101">link github</a> https://github.com/johanns/crypto-js/issues/101
       <ol>
         <li>
           salt : il salt permette di dare randomicità alla funzione per generare la key, questo perche non vogliamo usare la stessa key per due messaggi inviati. La lunghezza dell salt è di 128 bits 

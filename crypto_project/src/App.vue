@@ -1,11 +1,13 @@
 <script>
 import componentCrypto_cipher from "./components/ComponentCryptoCipher.vue";
 import componentCrypto_key from "./components/ComponentCryptoKey.vue";
+import componentCrypto_mac from "./components/ComponentCryptoMac.vue";
 
 export default {
   components: {
     componentCrypto_key,
     componentCrypto_cipher,
+    componentCrypto_mac,
   },
 };
 </script>
@@ -15,6 +17,7 @@ export default {
     lavoro in corso
     <componentCrypto_key />
     <componentCrypto_cipher />
+    <componentCrypto_mac />
   </div>
 </template>
 

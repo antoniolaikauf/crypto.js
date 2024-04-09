@@ -22,7 +22,7 @@ export default {
   mounted() {
     this.salt = CryptoJS.lib.WordArray.random(128 / 8);
     this.hexString = CryptoJS.PBKDF2("ciao", this.salt, { keySize: 128 / 32 });
-    console.log(this.hexString);
+    // console.log(this.hexString);
 
     // var encrypted = CryptoJS.AES.encrypt("Message", this.hexString.toString());
     var encrypted = CryptoJS.AES.encrypt("Message", this.hexString.toString(), {
@@ -30,7 +30,7 @@ export default {
       padding: CryptoJS.pad.AnsiX923,
     });
     // var decrypted = CryptoJS.AES.decrypt(encrypted, this.hexString);
-    console.log(encrypted);
+    // console.log(encrypted);
     // console.log(decrypted.toString(CryptoJS.enc.Utf8));
 
     // const iv = { words: [0, 0, 0, 0], sigBytes: 16 };
@@ -56,9 +56,8 @@ export default {
       <ol>
         <li>
             <b> messaggio</b> consiste nel testo che si vuole cifrare e nel es sopra sarebbe il Message qua la lunghezza del messaggio è di 128
-            bit 16 byte se il messaggio è piu lungo di 128 viene diviso in base a quanti bit ha , se il messaggio è troppo corto gli viene aggiunto il
-            padding fino a che non raggiunge 128 bit, Crypto.js aggiunge gia in automatico il padding Pkcs7 , ma ce ne sono molti altri tipi di padding
-            Pkcs7 (the default) Iso97971 AnsiX923 Iso10126 ZeroPadding NoPadding quindi nell'oggetto il blocksize si arebbe 'riferimento' alla disponibilita
+            bit 16 byte se il messaggio è piu lungo di 128 viene diviso prima processerà i 128 bit e dopo farà il resto , se il messaggio è troppo corto gli viene aggiunto il
+            padding fino a che non raggiunge 128 bit, quindi nell'oggetto il blocksize si farebbe 'riferimento' alla disponibilita
             del blocco dove viene inserito il messaggio e la lunghezza è di 4 questo perche in crypto.js le words vengo fatte in 32 bit 4byte quindi 128
             bits
         </li>
@@ -84,8 +83,9 @@ export default {
             <b>inoltre ho notato che con questo metodo non si aggiunge il salt nel cipher</b>
         </li>
         <li>
-            <b>padding</b> il padding viene aggiunta per coprire se il messaggio è troppo corto e come l'architettura viene aggiunta automaticamente come
-            descritto nella parte dei messaggio
+            <b>padding</b> il padding viene aggiunta per coprire se il messaggio è troppo corto rispetto ai bit del blocco, e se non si specifica viene aggiunto automaticamente 
+            il padding non consiste nel aggiungere tutti 0 fino a riempire il blocco ma ci sono delle standard , questi sono i padding che ci sono nella libreria  Pkcs7 (the default)
+             Iso97971 AnsiX923 Iso10126 ZeroPadding NoPadding
         </li>
         <li>
             <b>salt</b> sarebbe altra randomicità aggiunta alla key in modo tale che anche se si usa la stessa la stessa key non ritornerà los stesso output
@@ -93,10 +93,13 @@ export default {
         </li>
      </ol> 
      <p>
-        <b>NOTA BENE </b> all'interno di key dentro al cipher si vede che la key venga aumentata questo perche nei cifrari di blocco come l'AES la key
+        <b>NOTA BENE </b> <br> all'interno di key dentro al cipher si vede che la key venga aumentata questo perche nei cifrari di blocco come l'AES la key
         viene espansa im modo tale che ad ogni round si usi una key diversa ( probabilmente quel salt viene usato per queste key) quindi compare che è
-        lunga 384 bits essendo che ogni word ha 32 bit e ne sono 12 quindi da euesto si deduce che ci siano 12 round della function round
-        <img src="../../public/img/key_img.png" alt="" @click="selected_img" :class="selected ? 'img_big' : 'img_key'" />
+        lunga 384 bits essendo che ogni word ha 32 bit e ne sono 12 quindi da questo si deduce che ci siano 12 round della function round <br>
+
+        <img src="../../public/img/key_img.png" alt="" @click="selected_img" :class="selected ? 'img_big' : 'img_key'" /> <br>
+        inoltre questo esempio descrive un AES ma differenti cipher hanno differenti lunghezze di bit e caratteristiche, 
+        inoltre tutte le word all'interno degli array words sono di 32 bit forzati <a href="https://www.rapidtables.com/convert/number/decimal-to-binary.html"> se si vole provare</a>
     </p>
     </p>
   </section>
