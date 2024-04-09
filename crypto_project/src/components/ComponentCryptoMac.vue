@@ -25,7 +25,7 @@ export default {
     console.log(transitencrypted);
     var decryptedhmac = CryptoJS.HmacSHA512(transitencrypted, key.toString()).toString();
     console.log(decryptedhmac.toString());
-    // alert(transithmac == decryptedhmac);
+    alert(transithmac == decryptedhmac);
     var decrypted = CryptoJS.AES.decrypt(transitencrypted, key.toString());
     // alert(decrypted.toString(CryptoJS.enc.Utf8));
   },
