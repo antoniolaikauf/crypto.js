@@ -44,9 +44,9 @@ export default {
     // il salt usato per radomicità  cosi che anche se input rimane lo stesso l'output sarà sempre diverso
     this.salt = CryptoJS.lib.WordArray.random(128 / 8);
     this.hexString = CryptoJS.PBKDF2("ciao", this.salt, { keySize: 128 / 32 });
-    console.log(this.hexString);
     // Converti l'output in una stringa esadecimale
     this.hexString = this.hexString.toString(CryptoJS.enc.Hex);
+    console.log(this.hexString);
     this.salt=this.salt.toString(CryptoJS.enc.Hex)
     console.log(this.salt);
   },
@@ -57,13 +57,20 @@ export default {
   <section>
     <h1>Documentazione di Crypto.js</h1>
     <h3>
-      Spero che questa documentazione sia utile, essendo che sto iniziando a imparare sulla crittografia e ho trovato poco utile la documentazione di
-      crypto.js. Il comando per installare è questo: npm install crypto-js e deve essere lanciato nel terminale.
+      Spero che questa documentazione sia utile, essendo che sto iniziando a imparare la crittografia e ho trovato poco utile la documentazione di
+      crypto.js.
       <div>
-        <a href="https://cryptojs.gitbook.io/docs#pbkdf2">Questo è il link per la documentazione</a>
-        https://cryptojs.gitbook.io/docs#pbkdf2 <br />
-        <a href="https://nodejs.org/api/crypto.html">Altro link</a>
-        https://nodejs.org/api/crypto.html
+        <ul>
+          <li>Il comando per installare è questo: npm install crypto-js e deve essere lanciato nel terminale.</li>
+          <li>
+             <a href="https://cryptojs.gitbook.io/docs#pbkdf2">Questo è il link per la documentazione</a>
+             https://cryptojs.gitbook.io/docs#pbkdf2 
+          </li>
+          <li>  
+              <a href="https://nodejs.org/api/crypto.html">Altro link</a>
+               https://nodejs.org/api/crypto.html
+         </li>
+        </ul>
       </div>
     </h3>
     <div>

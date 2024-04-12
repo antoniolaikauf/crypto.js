@@ -13,16 +13,18 @@ export default {
 </script>
 
 <template>
-  <div style="position: relative">
-    lavoro in corso
-    <componentCrypto_key />
-    <componentCrypto_cipher />
-    <componentCrypto_mac />
+  <div class="container">
+    <div class="row">
+      <div style="position: relative">
+        lavoro in corso
+        <componentCrypto_key />
+        <componentCrypto_cipher />
+        <componentCrypto_mac />
+      </div>
+    </div>
   </div>
 </template>
 
-<style>
-* {
-  font-family: "Courier New", Courier, monospace;
-}
+<style lang="scss">
+@import "./style/general.scss";
 </style>

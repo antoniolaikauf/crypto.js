@@ -30,7 +30,7 @@ export default {
       padding: CryptoJS.pad.AnsiX923,
     });
     // var decrypted = CryptoJS.AES.decrypt(encrypted, this.hexString);
-    // console.log(encrypted);
+    console.log(encrypted);
     // console.log(decrypted.toString(CryptoJS.enc.Utf8));
 
     // const iv = { words: [0, 0, 0, 0], sigBytes: 16 };
@@ -45,15 +45,15 @@ export default {
     <p>
       I cifrari sono composti da vari elementi. Ci sono i due algoritmi <b>E</b> e <b>D</b> che permettono di cifrare e decifrare i messaggi inviati.
       Questi prendono vari input e restituiscono degli output, come se fossero funzioni. Per quanto riguarda l'algoritmo <b>E</b>, prende la key e il
-      messaggio e, per il <b>D</b>, prende <b>E</b> (che sarebbe il <b>C/testo cifrato</b>) e prende la stessa key per poi decodificare il messaggio
+      messaggio per il <b>D</b>, prende <b>E</b> (che sarebbe il <b>C/testo cifrato</b>) e prende la stessa key per poi decodificare il messaggio
       che è stato inviato dal nostro utente. Questo è il funzionamento base di come funziona un cipher. I cifrari che Crypto.js supporta sono
       <span v-for="(algoritmo, i) in algoritmi">{{ algoritmo }}</span
       >. Per quanto riguarda i cifrari, possono essere di flusso/steam o a blocchi/block. Se vediamo un esempio nella AES, la lunghezza del messaggio
       è di 128 bit. <br />
       var encrypted = CryptoJS.AES.encrypt("Message", "Secret Passphrase"); <br />
       var decrypted = CryptoJS.AES.decrypt(encrypted, "Secret Passphrase"); <br />
-      <a href="https://github.com/mpetersen/aes-example/blob/master/README.md">Link per AES</a>. PS: inoltre, qui spiega anche la parte della key
-      divisa.
+      <a href="https://github.com/mpetersen/aes-example/blob/master/README.md">Link per AES</a>. 
+      <!-- PS: inoltre, qui spiega anche la parte della key  divisa.-->
     </p>
 
     <ol>
