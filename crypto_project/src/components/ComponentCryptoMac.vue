@@ -63,7 +63,10 @@ export default {
       La formula per HMAC <a href="https://en.wikipedia.org/wiki/HMAC">la puoi trovare qua</a> i due blocchi che all'interno della formula vengono
       concatenati dipendono da che algoritmo si usa se si usa il sha256 sono di 512 bit e per il sha512 sono 1024 bit che dopo vengono compressi a
       ritornare 256 e 512 bit Il opad sarebbe una composizione di byte di 0x5c invece per il ipad sarebbe una composizione di byte di 0x36 per quanto
-      riguarda la key o il messaggio se non riescono ad arrivare a 512 bit gli si vinene aggiunto del padding. <br />
+      riguarda la key o il messaggio se non riescono ad arrivare a 512 bit gli si vinene aggiunto del padding. Nella parte prima dove è presente  XOR tra
+      la key e il opad il rsultato sarà di 512 bit se si usa lo sha256, invece nella seconda parte sarà l'output dell'algoritmo H (quindi lo sha256) con all'interno XOR di K e
+      ipad concatenato al messaggio, l'output sarà di 256 bit essendo che i bit vengono compressi. Alla fine sarà una concatenazione tra 526 bit della prima
+      parte e 256 bit della seconda parte che dopo a sua volta saranno compressi anche loro in 256 bit di output che si riferiranno all'HASH <br />
       L'algoritmo SHA256 è un algoritmo che come input riceve solo il messaggio e come output ritorna un hash che fara riferimento al messaggiinserito
       come input es.
       <b>var hash = CryptoJS.SHA256("Message");</b> ritornerà una stringa lunga 256 bit. Alcune regole per quanto riguarda l'hash è che
