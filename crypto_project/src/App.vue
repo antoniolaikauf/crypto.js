@@ -2,12 +2,14 @@
 import componentCrypto_cipher from "./components/ComponentCryptoCipher.vue";
 import componentCrypto_key from "./components/ComponentCryptoKey.vue";
 import componentCrypto_mac from "./components/ComponentCryptoMac.vue";
+import desProcedimento from "./components/ComponentDesProcesso.vue";
 
 export default {
   components: {
     componentCrypto_key,
     componentCrypto_cipher,
     componentCrypto_mac,
+    desProcedimento,
   },
 };
 </script>
@@ -16,10 +18,10 @@ export default {
   <div class="container">
     <div class="row">
       <div style="position: relative">
-        lavoro in corso
         <componentCrypto_key />
         <componentCrypto_cipher />
         <componentCrypto_mac />
+        <desProcedimento />
       </div>
     </div>
   </div>
