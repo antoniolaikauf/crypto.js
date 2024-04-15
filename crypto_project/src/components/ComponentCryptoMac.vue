@@ -81,6 +81,7 @@ export default {
       >
       e sostiene che ci vorrebbero almento 2**1/n dove n sarebbero la lunghezza di una stringa di bit che restituisce il sha256 quindi sarebbero 128
       bit. <br />
+      <img src="../../public/img/mac.png" alt="">
     </p>
   </section>
 </template>
