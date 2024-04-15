@@ -2,7 +2,7 @@
 import componentCrypto_cipher from "./components/ComponentCryptoCipher.vue";
 import componentCrypto_key from "./components/ComponentCryptoKey.vue";
 import componentCrypto_mac from "./components/ComponentCryptoMac.vue";
-import desProcedimento from "./components/ComponentDesProcesso.vue";
+import desProcedimento from "./components/ComponentCryptoNote.vue";
 
 export default {
   components: {
