@@ -4,7 +4,7 @@ export default {
   name: "componentCrypto_mac",
   mounted() {
     var hash = CryptoJS.SHA256("Message");
-    console.log(hash);
+    // console.log(hash);
     let salt = CryptoJS.lib.WordArray.random(128 / 8);
     let key = CryptoJS.PBKDF2("ciao", salt, { keySize: 128 / 32 });
     // console.log(key);
@@ -23,10 +23,10 @@ export default {
 
     // tag
     var transithmac = transitmessage.substring(0, 128);
-    console.log(transithmac);
+    // console.log(transithmac);
     // testo crittato
     var transitencrypted = transitmessage.substring(128);
-    console.log(transitencrypted);
+    // console.log(transitencrypted);
     var decryptedhmac = CryptoJS.HmacSHA512(transitencrypted, key.toString()).toString();
     // console.log(decryptedhmac.toString());
     // alert(transithmac == decryptedhmac);

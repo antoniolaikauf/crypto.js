@@ -7,17 +7,18 @@ export default {
       algoritmi: [" AES ", " DES ", " TripleDES ", " Rabbit ", " RC4 ", " RC4Drop "],
       salt: "",
       hexString: "",
+      hexString2: "",
     };
   },
   mounted() {
     this.salt = CryptoJS.lib.WordArray.random(128 / 8);
     this.hexString = CryptoJS.PBKDF2("ciao", this.salt, { keySize: 128 / 32 }).toString();
     this.hexString2 = CryptoJS.PBKDF2("ciao", this.salt, { keySize: 128 / 32 }).toString();
-    // console.log(this.hexString);
+    console.log(this.hexString, this.hexString2);
 
     // var encrypted = CryptoJS.AES.encrypt("Message", this.hexString.toString());
     var encrypted = CryptoJS.AES.encrypt("Message", this.hexString);
-    var decrypted = CryptoJS.AES.decrypt(encrypted, this.hexString);
+    var decrypted = CryptoJS.AES.decrypt(encrypted, this.hexString2);
     console.log(encrypted);
     console.log(decrypted.toString(CryptoJS.enc.Utf8));
 

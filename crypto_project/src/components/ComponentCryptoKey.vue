@@ -46,9 +46,9 @@ export default {
     this.hexString = CryptoJS.PBKDF2("ciao", this.salt, { keySize: 128 / 32 });
     // Converti l'output in una stringa esadecimale
     this.hexString = this.hexString.toString(CryptoJS.enc.Hex);
-    console.log(this.hexString);
+    // console.log(this.hexString);
     this.salt=this.salt.toString(CryptoJS.enc.Hex)
-    console.log(this.salt);
+    // console.log(this.salt);
   },
 };
 </script>
