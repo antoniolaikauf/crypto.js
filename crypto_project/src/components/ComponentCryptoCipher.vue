@@ -7,31 +7,19 @@ export default {
       algoritmi: [" AES ", " DES ", " TripleDES ", " Rabbit ", " RC4 ", " RC4Drop "],
       salt: "",
       hexString: "",
-      selected: false,
     };
-  },
-  methods: {
-    selected_img() {
-      if (this.selected) {
-        this.selected = false;
-      } else {
-        this.selected = true;
-      }
-    },
   },
   mounted() {
     this.salt = CryptoJS.lib.WordArray.random(128 / 8);
-    this.hexString = CryptoJS.PBKDF2("ciao", this.salt, { keySize: 128 / 32 });
+    this.hexString = CryptoJS.PBKDF2("ciao", this.salt, { keySize: 128 / 32 }).toString();
+    this.hexString2 = CryptoJS.PBKDF2("ciao", this.salt, { keySize: 128 / 32 }).toString();
     // console.log(this.hexString);
 
     // var encrypted = CryptoJS.AES.encrypt("Message", this.hexString.toString());
-    var encrypted = CryptoJS.AES.encrypt("Message", this.hexString.toString(), {
-      mode: CryptoJS.mode.CFB,
-      padding: CryptoJS.pad.AnsiX923,
-    });
-    // var decrypted = CryptoJS.AES.decrypt(encrypted, this.hexString);
+    var encrypted = CryptoJS.AES.encrypt("Message", this.hexString);
+    var decrypted = CryptoJS.AES.decrypt(encrypted, this.hexString);
     console.log(encrypted);
-    // console.log(decrypted.toString(CryptoJS.enc.Utf8));
+    console.log(decrypted.toString(CryptoJS.enc.Utf8));
 
     // const iv = { words: [0, 0, 0, 0], sigBytes: 16 };
     // let code = CryptoJS.AES.encrypt("message", CryptoJS.enc.Utf8.parse("your secret key"), { iv });
@@ -45,14 +33,14 @@ export default {
     <p>
       I cifrari sono composti da vari elementi. Ci sono i due algoritmi <b>E</b> e <b>D</b> che permettono di cifrare e decifrare i messaggi inviati.
       Questi prendono vari input e restituiscono degli output, come se fossero funzioni. Per quanto riguarda l'algoritmo <b>E</b>, prende la key e il
-      messaggio per il <b>D</b>, prende <b>E</b> (che sarebbe il <b>C/testo cifrato</b>) e prende la stessa key per poi decodificare il messaggio
-      che è stato inviato dal nostro utente. Questo è il funzionamento base di come funziona un cipher. I cifrari che Crypto.js supporta sono
+      messaggio per il <b>D</b>, prende <b>E</b> (che sarebbe il <b>C/testo cifrato</b>) e prende la stessa key per poi decodificare il messaggio che
+      è stato inviato dal nostro utente. Questo è il funzionamento base di come funziona un cipher. I cifrari che Crypto.js supporta sono
       <span v-for="(algoritmo, i) in algoritmi">{{ algoritmo }}</span
       >. Per quanto riguarda i cifrari, possono essere di flusso/steam o a blocchi/block. Se vediamo un esempio nella AES, la lunghezza del messaggio
       è di 128 bit. <br />
       var encrypted = CryptoJS.AES.encrypt("Message", "Secret Passphrase"); <br />
       var decrypted = CryptoJS.AES.decrypt(encrypted, "Secret Passphrase"); <br />
-      <a href="https://github.com/mpetersen/aes-example/blob/master/README.md">Link per AES</a>. 
+      <a href="https://github.com/mpetersen/aes-example/blob/master/README.md">Link per AES</a>.
       <!-- PS: inoltre, qui spiega anche la parte della key  divisa.-->
     </p>
 
@@ -101,7 +89,7 @@ export default {
       modo tale che ad ogni round si usi una key diversa (probabilmente quel salt viene usato per queste key). Quindi si deduce che ci siano 12 round
       della function round, essendo che ogni word ha 32 bit e ne sono 12, quindi si deduce che la lunghezza è di 384 bits. <br />
 
-      <img src="../../public/img/key_img.png" alt="" @click="selected_img" :class="selected ? 'img_big' : 'img_key'" /> <br />
+      <img src="../../public/img/key_img.png" class="img_key" /> <br />
       Inoltre, questo esempio descrive un AES ma differenti cifrari hanno differenti lunghezze di bit e caratteristiche. Inoltre, tutte le word
       all'interno degli array words sono di 32 bit forzati.
       <a href="https://www.rapidtables.com/convert/number/decimal-to-binary.html">Se si vuole provare</a>.
@@ -111,14 +99,12 @@ export default {
 
 <style scoped>
 .img_key {
-  width: 100px;
-}
-.img_big {
-  position: absolute;
   width: 50%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border: 1px solid black;
+}
+
+@media all and (max-width: 700px) {
+  .img_key {
+    width: 100%;
+  }
 }
 </style>
