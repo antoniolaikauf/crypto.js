@@ -33,9 +33,9 @@ export default {
     <h3>Algoritmi di crittografia</h3>
     <p>
       I cifrari sono composti da vari elementi. Ci sono i due algoritmi <b>E</b> e <b>D</b> che permettono di cifrare e decifrare i messaggi inviati.
-      Questi prendono vari input e restituiscono degli output, come se fossero funzioni. Per quanto riguarda l'algoritmo <b>E</b>, prende la key e il
-      messaggio per il <b>D</b>, prende <b>E</b> (che sarebbe il <b>C/testo cifrato</b>) e prende la stessa key per poi decodificare il messaggio che
-      è stato inviato dal nostro utente. Questo è il funzionamento base di come funziona un cipher. I cifrari che Crypto.js supporta sono
+      Questi prendono vari input e restituiscono degli output, come funzioni. Per quanto riguarda l'algoritmo <b>E</b>, prende la key e il messaggio
+      per il <b>D</b>, prende <b>E</b> (che sarebbe il <b>C/testo cifrato</b>) e prende la stessa key per poi decodificare il messaggio che è stato
+      inviato dal nostro utente. Questo è il funzionamento base di come funziona un cipher. I cifrari che Crypto.js supporta sono
       <span v-for="(algoritmo, i) in algoritmi">{{ algoritmo }}</span
       >. Per quanto riguarda i cifrari, possono essere di flusso/steam o a blocchi/block. Se vediamo un esempio nella AES, la lunghezza del messaggio
       è di 128 bit. <br />
@@ -51,16 +51,16 @@ export default {
         (16 byte). Se il messaggio è più lungo di 128, viene diviso: prima processerà i 128 bit e poi farà il resto. Se il messaggio è troppo corto,
         gli viene aggiunto il padding fino a che non raggiunge 128 bit. Quindi, nell'oggetto il blocksize si farebbe 'riferimento' alla disponibilità
         del blocco dove viene inserito il messaggio e la lunghezza è di 4. Questo perché in Crypto.js le words vengono fatte in 32 bit (4 byte),
-        quindi 128 bit.
+        quindi 128 bit e l'array word si rierisce alla parola Message.
       </li>
       <li>
         <b>KEY</b> deve essere di lunghezza adatta al cipher, es. un AES accetta key lunghe 128/192/256 bit, un DES 64. Se si guarda nell'esempio
-        sopra, va messa al posto di "Secret Passphrase". Ovviamente, deve essere uguale sia per l'<b>encrypt</b> che per il <b>decrypt</b>.
-        Nell'oggetto dell'encrypt, si vede la lunghezza della key con keysize, che specifica 8, quindi sarebbe 8*32=256, ma sarebbe sbagliato; ritorna
-        8 essendo che nell'array words ci sono 8 parole anziché 4, come dovrebbe essere. Quindi, se ce ne sono 8, qui ritorna lunghezza della key di
-        256 (non sono riuscito a trovare niente riguardante questo, probabilmente è una cosa di Crypto.js già impostata così). Se si vuole vedere, si
-        trova nella key array words, in questo caso la sua lunghezza è di sigBytes 32 byte (stessa cosa, non so se è impostata ad avere sempre 8
-        parole e poi le seleziona in base alla lunghezza della key data da noi).
+        sopra, va messa al posto di "Secret Passphrase". Ovviamente, deve essere uguale sia per l'<b>encrypt</b> che per il <b>decrypt</b> se si usa
+        una crittografia simmetrica. Nell'oggetto dell'encrypt, si vede la lunghezza della key con keysize, che specifica 8, quindi sarebbe 8*32=256,
+        ma sarebbe sbagliato; ritorna 8 essendo che nell'array words ci sono 8 parole anziché 4, come dovrebbe essere. Quindi, se ce ne sono 8, qui
+        ritorna lunghezza della key di 256 (non sono riuscito a trovare niente riguardante questo, probabilmente è una cosa di Crypto.js già impostata
+        così). Se si vuole vedere, si trova nella key array words, in questo caso la sua lunghezza è di sigBytes 32 byte (stessa cosa, non so se è
+        impostata ad avere sempre 8 parole e poi le seleziona in base alla lunghezza della key data da noi).
       </li>
       <li>
         <b>Testo cifrato</b> si trova nel ciphertext e dentro all'array words conterrà il testo cifrato. Ogni stringa dentro a questo array è di 32

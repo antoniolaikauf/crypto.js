@@ -43,11 +43,14 @@ export default {
     // le word sono usate per manipolare i dati di input e produrre output sicuri.
     // il salt usato per radomicità  cosi che anche se input rimane lo stesso l'output sarà sempre diverso
     this.salt = CryptoJS.lib.WordArray.random(128 / 8);
-    this.hexString = CryptoJS.PBKDF2("ciao", this.salt, { keySize: 128 / 32 });
+    this.hexString = CryptoJS.PBKDF2("ciao", this.salt, {
+      keySize: 128 / 32,
+      iterations: 1000,
+    }).toString(CryptoJS.enc.Hex);
     // Converti l'output in una stringa esadecimale
     this.hexString = this.hexString.toString(CryptoJS.enc.Hex);
     // console.log(this.hexString);
-    this.salt=this.salt.toString(CryptoJS.enc.Hex)
+    this.salt = this.salt.toString(CryptoJS.enc.Hex);
     // console.log(this.salt);
   },
 };
@@ -55,24 +58,6 @@ export default {
 
 <template>
   <section>
-    <h1>Documentazione di Crypto.js</h1>
-    <h3>
-      Spero che questa documentazione sia utile, essendo che sto iniziando a imparare la crittografia e ho trovato poco utile la documentazione di
-      crypto.js.
-      <div>
-        <ul>
-          <li>Il comando per installare è questo: npm install crypto-js e deve essere lanciato nel terminale.</li>
-          <li>
-             <a href="https://cryptojs.gitbook.io/docs#pbkdf2">Questo è il link per la documentazione</a>
-             https://cryptojs.gitbook.io/docs#pbkdf2 
-          </li>
-          <li>  
-              <a href="https://nodejs.org/api/crypto.html">Altro link</a>
-               https://nodejs.org/api/crypto.html
-         </li>
-        </ul>
-      </div>
-    </h3>
     <div>
       <h3>Generazione della key</h3>
       <p>
@@ -86,19 +71,35 @@ export default {
         <a href="https://github.com/johanns/crypto-js/issues/101">link GitHub</a> https://github.com/johanns/crypto-js/issues/101
         <ol>
           <li>
-            salt: il salt permette di dare randomicità alla funzione per generare la key, questo perché non vogliamo usare la stessa key per due messaggi inviati. La lunghezza del salt è di 128 bits 
-            in questo caso. La lunghezza del salt non deve essere necessariamente uguale a quella della key che si vuole usare.
+            salt: il salt permette di dare randomicità alla funzione per generare la key, questo perché non vogliamo usare la stessa key per due messaggi
+            inviati. La lunghezza del salt è di 128 bits in questo caso. La lunghezza del salt non deve essere necessariamente uguale a quella della key
+            che si vuole usare.
           </li>
           <li>
-            Ora per quanto riguarda la generazione della <b>key</b>, prima bisogna passarle la password come input, in questo caso scegliamo 'ciao'. Il secondo parametro è il <b>salt</b>, così che anche se la password rimane 'ciao', l'output della key 
-            sarà sempre diverso. Il terzo parametro è la <b>keysize/keylen</b>, che gestisce i bit della key generata. La lunghezza di bit del metodo PBKDF2 deve essere in base all'algoritmo dove la vuoi inserire, es. con AES si usa una key lunga 128/192/256, nel DES 64, 3DES 168.
-            Da quello che ho visto online, le word all'interno dell'array sono sempre 8, anche se teoricamente dovrebbero essere 4, essendo che 128/32 fa 4. Ogni parola all'interno dell'array words è composta da 32 bits. Un'altra cosa importante è il <b>sigBytes</b>, essendo che ci dice 
-            quanti byte ha la key. Nel caso che abbiamo fatto è 16, perché 16 * 8 fa 128 bits, che sarebbero la lunghezza della key. Se si mettesse, esempio 128/16, la quantità delle word nell'array words non cambia, rimane 8, ma nel <b>sigBytes</b> cambia a 32 e risulta sbagliato teoricamente,
-            essendo che 32 bytes * 8 fa 256 bits e quindi va oltre la lunghezza della key (non so se è una cosa di crypto.js o sono io che ho cercato male su internet e sigBytes non si riferisce alla lunghezza della key). <b>Il contenuto all'interno dell'array words sarebbe la key generata</b>.
-           <b>L'iterazione</b> specifica il numero di volte che la funzione di derivazione della chiave viene eseguita. L'uso di molteplici iterazioni serve a rendere il processo di derivazione della chiave più resistente contro attacchi di forza bruta.
-           <br> Questo è il risultato della key con lunghezza 128 bits per usare in un AES.
-         </li>
-       </ol>
+            Per quanto riguarda la generazione della <b>key</b>, inizialmente è necessario inserire la password come input; in questo caso scegliamo
+            'ciao'. Il secondo parametro è il <b>salt</b>, così che, anche se la password rimane 'ciao', l'output della <b>key</b> sarà sempre lierso. Il
+            terzo parametro è la <b>keysize/keylen</b>, che gestisce i bit della <b>key</b> generata. La lunghezza in bit del metodo PBKDF2 deve essere
+            adeguata all'algoritmo in cui si intende utilizzare la <b>key</b>; ad esempio, con AES si usa una <b>key</b> lunga 128, 192 o 256 bit, nel DES
+            64 bit e nel 3DES 168 bit. Da quello che ho visto online, le parole all'interno dell'array sono sempre otto, anche se teoricamente dovrebbero
+            essere quattro, essendo che 128/32 fa 4. Ogni parola all'interno dell'array di parole è composta da 32 bit. Un altro elemento importante è il
+            <b>sigBytes</b>, che ci dice quanti byte ha la <b>key</b>. Nel caso che abbiamo considerato è 16, perché 16 * 8 fa 128 bit, che sarebbero la
+            lunghezza della <b>key</b>. Se si impostasse, ad esempio, 128/16, la quantità delle parole nell'array words non cambia, rimane 8, ma in
+            <b>sigBytes</b> cambia a 32, il che teoricamente è sbagliato, essendo che 32 byte * 8 fa 256 bit e quindi va oltre la lunghezza della
+            <b>key</b> (non so se è una caratteristica di Crypto.js o se ho cercato male su internet e <b>sigBytes</b> non si riferisce alla lunghezza
+            della <b>key</b>). <b>Il contenuto all'interno dell'array words sarebbe la key generata</b>.
+    
+            <b>L'iterazione</b> specifica il numero di volte che la funzione di derivazione della chiave viene eseguita. L'uso di molteplici iterazioni
+            serve a rendere il processo di derivazione della chiave più resistente contro gli attacchi di forza bruta. Questo è il risultato della
+            <b>key</b> con lunghezza 128 bit per essere usata in AES. Questo fa riferimento alla crittografia simmetrica, ma per quanto riguarda la
+            crittografia asimmetrica, bisognerebbe generare più chiavi. Per quanto riguarda la crittografia asimmetrica, ci possono essere due modi per
+            generare le chiavi: uno può essere il PBKDM, dove si usa direttamente la password, e per quanto riguarda l'HDKM, ha due fasi principali
+            chiamate espansione ed estrazione, e in entrambe le fasi utilizza un PRF che sarà un HMAC come funzione. Ma in entrambi i casi, sia per PBKDM
+            che per HDKM, è necessario produrre una stringa di tot bit in base a quante chiavi vogliamo, e dopo troncare quella stringa in più chiavi.
+            Queste due stringhe faranno riferimento alla password <b>key</b> inserita all'interno del PBKDF e HKDF. Nella crittografia simmetrica non è un
+            problema, essendo che la chiave si usa sia per decifrare che per cifrare il messaggio (ricordarsi di cambiarla ogni volta, altrimenti si
+            rischia di subire degli attacchi, essendo che facendo la xor tra due <b>key</b> uguali il risultato è 0).
+          </li>
+        </ol>
       </p>
     </div>
 
