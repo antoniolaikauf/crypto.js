@@ -1,6 +1,10 @@
 <script>
 import CryptoJS from "crypto-js";
+import ShareKey from "./ComponentShareKey.vue";
 export default {
+  components: {
+    ShareKey
+  },
   name: "componentCrypto_key",
   data() {
     return {
@@ -99,7 +103,8 @@ export default {
             problema, essendo che la chiave si usa sia per decifrare che per cifrare il messaggio (ricordarsi di cambiarla ogni volta, altrimenti si
             rischia di subire degli attacchi, essendo che facendo la xor tra due <b>key</b> uguali il risultato è 0).
           </li>
-        </ol>
+        </ol> 
+        <ShareKey/>
       </p>
     </div>
 
