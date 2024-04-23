@@ -17,9 +17,17 @@ export default {
       chiave dell'altra persona sarà presente la sua, così che potrà decifrare il testo cifrato e otterrà la chiave del protocollo. In questo modo,
       solo le due persone possono decifrare il messaggio che hanno ottenuto, essendo che solo loro hanno le chiavi che hanno fornito al protocollo
       all'inizio. <br />
-      Con questo procedimento, entrambe le persone condividono una chiave. Un aspetto molto importante è che per ottenere questa chiave il protocollo deve
-      essere online e, un altro aspetto è che, se un aggressore riesce a superare la sicurezza di questo protocollo, potrebbe ottenere le chiavi
-      condivise, quindi ci sono anche dei svantaggi. Questo metodo riguarda la crittografia simmetrica.
+      Con questo procedimento, entrambe le persone condividono una chiave. Un aspetto molto importante è che per ottenere questa chiave il protocollo
+      deve essere online e, un altro aspetto è che, se un aggressore riesce a superare la sicurezza di questo protocollo, potrebbe ottenere le chiavi
+      condivise, quindi ci sono anche dei svantaggi. Questo metodo riguarda la crittografia simmetrica. <br />
+      L'altro metodo non utilizza un TTP (Trusted Third Party) e funziona tramite i protocolli <b>Merkle Puzzle</b> e
+      <b>Diffie-Hellman</b>
+      (DH), che non spiegherò dato che per la libreria non sono molto rilevanti. <br />
+      Per quanto riguarda la crittografia a chiave pubblica (asimmetrica), essa utilizza un altro algoritmo, chiamato G, che genera una coppia di
+      chiavi denominate <b>chiave pubblica e chiave segreta</b>. Se ci sono due persone, Alice e Bob, Alice genererà le due coppie di chiavi e invierà
+      la chiave pubblica a Bob. Quest'ultimo sceglierà un testo in chiaro, indicato come x, e utilizzerà la chiave pubblica ricevuta per cifrare il
+      testo e inviarlo ad Alice. Quest'ultima userà la chiave segreta che possiede per decifrare il messaggio. <br />
+      Un svantaggio di questo metodo è che Bob, se vuole inviare un messaggio, dovrà sempre aspettare di ricevere la chiave pubblica di Alice
     </p>
   </section>
 </template>
