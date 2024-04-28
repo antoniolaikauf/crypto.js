@@ -19,20 +19,15 @@ export default {
       <b>L'output di G sarà una coppia di chiavi pubblica e privata</b>. Per iniziare a comunicare, bisognerà inviare la chiave pubblica al
       destinatario. Il mittente utilizzerà la chiave pubblica del destinatario per cifrare il suo messaggio. Una volta che il destinatario avrà
       ricevuto il testo cifrato, utilizzerà la sua chiave privata per decifrare il messaggio e ottenere il testo in chiaro. <br />
-
-
-
-      La crittografia asimetrica si basa sulla teoria dei numeri e sul modulo inverso specialemte sulla <b>teoremi di Fermat e Eulero</b>. La teroia
-      di fermat afferma se p è primo e se a è un intero non divisibile per p, allora vale la congruenza a^p-1 ≡ 1(modp), il che significa che se si
-      divide ap−1 per p si ottiene come resto 1. Invece se si volesse ottenere il valore che moltiplicato ad a facesse 1 modp sarebbe a^p-2= a^-1
+      La crittografia asimetrica si basa sulla <b>teoria dei numeri</b> e sul modulo inverso specialmente sui <b>teoremi di Fermat e Eulero</b>. La
+      teoria di fermat afferma se p è primo e se a è un intero non divisibile per p, allora vale la congruenza a^p-1 ≡ 1(modp), il che significa che
+      se si divide ap−1 per p si ottiene come resto 1. Se invece si volesse ottenere il valore che moltiplicato ad a facesse 1 modp sarebbe a^p-2=
+      a^-1
       <a href="https://www.treccani.it/enciclopedia/piccolo-teorema-di-fermat_%28Enciclopedia-della-Matematica%29/"><b>Teorema di fermat</b></a>
-      Es. p=7 zp={1,2,3,4,5,6} se si prendesse una x dal'insieme di zp e lo si elevasse a p-1 si otterrebbe sempre 1 modp 3^6=729=1 mod7, se invece si
-      volesse troovare l'inverso si eleverebbe alla p-2 Es. p=7 zp={1,2,3,4,5,6} a=3 quindi x * a =1 modp ora bisognerebbe trovare x in modo tale che
-      che moltiplicato per a faccia 1 modp quindi si prende a e lo si eleva alla p-2 quindi 3*5=243=5 modp quindi il valore inverso di a (a^-1)
-      sarebbe 5 se prendiamo l'equazione di prima e sostituiamo x con 5, 5 * 3 = 15 =1 modp 
-
-      <hr>
-      
+      Es. p=7 zp={1,2,3,4,5,6} se si prendesse una x dal'insieme di zp e lo si elevasse a p-1 si otterrebbe sempre 1 modp 3^6=729=1 mod 7, se invece
+      si volesse trovare l'inverso si eleverebbe alla p-2 Es. p=7 Zp={1,2,3,4,5,6} a=3 quindi x*a =1 modp ora bisognerebbe trovare x in modo tale
+      che che moltiplicato per a faccia 1 modp quindi si prende a e lo si eleva alla p-2 quindi 3*5=243=5 mod p quindi l'inverso di a (a^-1) sarebbe 5
+      se prendiamo l'equazione di prima e sostituiamo x con 5, 5 * 3 = 15 =1 mod p <br />.
     </p>
   </section>
 </template>
