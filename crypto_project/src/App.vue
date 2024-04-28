@@ -3,6 +3,7 @@ import componentCrypto_cipher from "./components/ComponentCryptoCipher.vue";
 import componentCrypto_key from "./components/ComponentCryptoKey.vue";
 import componentCrypto_mac from "./components/ComponentCryptoMac.vue";
 import desProcedimento from "./components/ComponentCryptoNote.vue";
+import typeCypher from "./components/ComponentCrypto.vue";
 
 export default {
   components: {
@@ -10,6 +11,7 @@ export default {
     componentCrypto_cipher,
     componentCrypto_mac,
     desProcedimento,
+    typeCypher,
   },
 };
 </script>
@@ -22,6 +24,7 @@ export default {
           <a class="list-group-item list-group-item-action" href="#list-item-1">Chiavi</a>
           <a class="list-group-item list-group-item-action" href="#list-item-2">Cifrari</a>
           <a class="list-group-item list-group-item-action" href="#list-item-3">MAC</a>
+          <a class="list-group-item list-group-item-action" href="#list-item-5">Type</a>
           <a class="list-group-item list-group-item-action" href="#list-item-4">Note</a>
         </div>
       </div>
@@ -45,6 +48,7 @@ export default {
               </ul>
             </div>
           </h3>
+          <div id="list-item-5"><typeCypher /></div>
           <div id="list-item-1"><componentCrypto_key /></div>
           <div id="list-item-2"><componentCrypto_cipher /></div>
           <div id="list-item-3"><componentCrypto_mac /></div>

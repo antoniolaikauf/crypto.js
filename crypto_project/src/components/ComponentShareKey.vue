@@ -23,11 +23,6 @@ export default {
       L'altro metodo non utilizza un TTP (Trusted Third Party) e funziona tramite i protocolli <b>Merkle Puzzle</b> e
       <b>Diffie-Hellman</b>
       (DH), che non spiegherò dato che per la libreria non sono molto rilevanti. <br />
-      Per quanto riguarda la crittografia a chiave pubblica (asimmetrica), essa utilizza un altro algoritmo, chiamato G, che genera una coppia di
-      chiavi denominate <b>chiave pubblica e chiave segreta</b>. Se ci sono due persone, Alice e Bob, Alice genererà le due coppie di chiavi e invierà
-      la chiave pubblica a Bob. Quest'ultimo sceglierà un testo in chiaro, indicato come x, e utilizzerà la chiave pubblica ricevuta per cifrare il
-      testo e inviarlo ad Alice. Quest'ultima userà la chiave segreta che possiede per decifrare il messaggio. <br />
-      Un svantaggio di questo metodo è che Bob, se vuole inviare un messaggio, dovrà sempre aspettare di ricevere la chiave pubblica di Alice
     </p>
   </section>
 </template>
