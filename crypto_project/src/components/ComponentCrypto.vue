@@ -27,9 +27,13 @@ export default {
       Es. p=7 zp={1,2,3,4,5,6} se si prendesse una x dal'insieme di zp e lo si elevasse a p-1 si otterrebbe sempre 1 modp 3^6=729=1 mod 7, se invece
       si volesse trovare l'inverso si eleverebbe alla p-2 Es. p=7 Zp={1,2,3,4,5,6} a=3 quindi x*a =1 modp ora bisognerebbe trovare x in modo tale che
       che moltiplicato per a faccia 1 modp quindi si prende a e lo si eleva alla p-2 quindi 3*5=243=5 mod p quindi l'inverso di a (a^-1) sarebbe 5 se
-      prendiamo l'equazione di prima e sostituiamo x con 5, 5 * 3 = 15 =1 mod p <br />. Per quanto riguarda la teoria di <b>Eulero</b> si usa quando p
+      prendiamo l'equazione di prima e sostituiamo x con 5, 5 * 3 = 15 =1 mod p <br />. Per quanto riguarda la teoria di
+      <a href="https://www.treccani.it/enciclopedia/teorema-di-eulero-fermat_%28Enciclopedia-della-Matematica%29/"><b>Eulero</b></a> si usa quando p
       non è primo quindi su N e si basa sulla <b>coprimibilità</b> cioè la relazione tra due numeri ad essere coprimi gcd(x,N)=1, quindi N può essere
-      anche un numero pari e riguarda la funzione <b>phi ϕ</b> ϕ(N), questo insieme sarebbe composto da tutti i valori coprimi tra 1 a phi-1 ED N  
+      anche un numero pari e riguarda la funzione <b>phi ϕ</b> ϕ(N), questo insieme sarebbe composto da tutti i valori coprimi tra 1 a phi-1 ED N Es.
+      N=12 ϕ(12)={1,5,7,11}=4 e il teorema afferma che se x appartenente ad Zn (questo insieme {1,5,7,11}) è coprimo con N allora x^ϕ(N)=1 mod N,
+      5^4=81=1 mod N. Invece per quanto riguarda calcolare il numero che moltiplicato faccia 1 mod N si eleva ϕ-1 Es. p=12 Zn={1,5,7,11} a=5 quindi
+      x*a =1 modp, (a deve appartenere ad Zn) x*5=1 mod N 5^ϕ-1=5^3=125=5mod N quindi x sarà 5 5*5=250 1 mod N
     </p>
   </section>
 </template>
