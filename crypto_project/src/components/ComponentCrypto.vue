@@ -34,6 +34,9 @@ export default {
       N=12 ϕ(12)={1,5,7,11}=4 e il teorema afferma che se x appartenente ad Zn (questo insieme {1,5,7,11}) è coprimo con N allora x^ϕ(N)=1 mod N,
       5^4=81=1 mod N. Invece per quanto riguarda calcolare il numero che moltiplicato faccia 1 mod N si eleva ϕ-1 Es. p=12 Zn={1,5,7,11} a=5 quindi
       x*a =1 modp, (a deve appartenere ad Zn) x*5=1 mod N 5^ϕ-1=5^3=125=5mod N quindi x sarà 5 5*5=250 1 mod N
+      <!-- INIZIO DA QUA -->
+      ci possono vari tipi per quanto riguarda la crittografia asimmetrica ma la cosa che hanno in comune è che hanno una funzione <b>one-way</b> cioè
+      che questa funzione produce solo l'output ma non si può ricavare l'input a meno che non si abbia la funzione inversa 
     </p>
   </section>
 </template>
