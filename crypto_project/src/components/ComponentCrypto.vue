@@ -58,10 +58,16 @@ export default {
         RSa/trapdoor tdf</a
       >
       Per quanto riguarda i procedimenti del crittografia RSA che viene spesso usato nei protocolli tls/ssl prima di usare le funzione rsa si fa il
-      procedimento del <b>OAEP Optimal Asymmetric Encryption Padding</b> in cui ci possono essere piu versioni per esempio il <b>OAEP+</b>
+      procedimento del <b>OAEP Optimal Asymmetric Encryption Padding</b> <br />
+      <img src="../../public/img/oaep.png" alt="" class="img_oaep" /> <br />
+      per il OAEP ci possono essere piu versioni per esempio il <b>OAEP+</b>
       <a href="https://www.shoup.net/papers/oaep.pdf">(paper scientifico del OAEP+)</a> o il
       <b>SAEP</b>
     </p>
   </section>
 </template>
-<style></style>
+<style lang="scss" scoped>
+.img_oaep {
+  width: 50%;
+}
+</style>
