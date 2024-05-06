@@ -45,7 +45,11 @@ export default {
       Per quanto riguarda la sicuezza del diffie hellman si basa sulla probabilità che non esiste
       <b>nessun algoritmo efficiente che riesce a calcolare g^ed</b> dato g dato g^e e g^d, un modo per calcolare e avendo d sarebbe calcolare la
       <b>th root</b> di e e quindi calcolare d ma calcolare e è difficile perchè si basa sul problema del logaritmo disceto che si usa con numeri
-      interi all'interno di un campo finito
+      interi all'interno di un campo finito. <br />
+      Per la sicurezza del RSA si basa <b>sulla fattorizazione di phi(n)</b>, dato la chiave pubblica e l'output della funzione one way, la
+      probabilita che un algoritmo efficiente riesca a calcolare la secret-key è trascurabile. Prima spieghiamo le proprietà di e,d che sarebbero due:
+      la prima è che devono essere coprimi di <b>phi(n)</b>, phi(n)=(q-1)*(p-1) in cui p e q sono due valori primi e devono essere piu o meno di
+      dimensioni uguali e l'altra è che e,d <q>devono essere inversi modulari tra di loro</q> quindi e*d=1 modphi(n)
     </p>
   </section>
 </template>
