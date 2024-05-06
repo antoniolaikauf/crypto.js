@@ -39,11 +39,9 @@ export default {
                 <li>Il comando per installare è questo: npm install crypto-js e deve essere lanciato nel terminale.</li>
                 <li>
                   <a href="https://cryptojs.gitbook.io/docs#pbkdf2">Questo è il link per la documentazione</a>
-                  https://cryptojs.gitbook.io/docs#pbkdf2
                 </li>
                 <li>
                   <a href="https://nodejs.org/api/crypto.html">Altro link</a>
-                  https://nodejs.org/api/crypto.html
                 </li>
               </ul>
             </div>
