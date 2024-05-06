@@ -51,13 +51,16 @@ export default {
       la prima è che devono essere coprimi di <b>phi(n)</b>, phi(n)=(q-1)*(p-1) in cui p e q sono due valori primi e devono essere piu o meno di
       dimensioni uguali e l'altra è che e,d <q>devono essere inversi modulari tra di loro</q> quindi e*d=1 modphi(n), detto questo calcolare d avendo
       e è difficile <q>essendo che d deve essere coprimo con phi(n) e per calcolare phi(n) bisognerebbe fattorizzare n quindi calcolare q e p</q> due
-      pagine per capire bene RSA <a href="https://it.wikipedia.org/wiki/RSA_(crittografia)">wiki RSA</a>, 
+      pagine per capire bene RSA <a href="https://it.wikipedia.org/wiki/RSA_(crittografia)">wiki RSA</a>,
       <a
         href="https://www.telsy.com/le-funzioni-one-way-e-trapdoor-il-cuore-della-crittografia-moderna/#:~:text=Funzioni%20one%2Dway%20nella%20crittografia%20a%20chiave%20pubblica&text=Pi%C3%B9%20formalmente%2C%20sia%20f%20%3A%20A,b%20f(a)%3Db"
       >
         RSa/trapdoor tdf</a
       >
-      
+      Per quanto riguarda i procedimenti del crittografia RSA che viene spesso usato nei protocolli tls/ssl prima di usare le funzione rsa si fa il
+      procedimento del <b>OAEP Optimal Asymmetric Encryption Padding</b> in cui ci possono essere piu versioni per esempio il <b>OAEP+</b>
+      <a href="https://www.shoup.net/papers/oaep.pdf">(paper scientifico del OAEP+)</a> o il
+      <b>SAEP</b>
     </p>
   </section>
 </template>
