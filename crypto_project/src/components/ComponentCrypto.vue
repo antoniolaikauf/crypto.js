@@ -40,7 +40,12 @@ export default {
       come input, e si produce un messaggio cifrato questo sarebbe l'output della funzione one-way. Questo messaggio cifrato, non può essere decifrato
       facilmente senza l'uso della corrispondente chiave privata, che funge da funzione inversa nel processo di decifratura. <br />
       <b>Durante la pratica non si deve fare direttamente sul testo in chiaro questo procedimento</b>, ma si usa per calcolare poi una key tramite una
-      funzione hash e questa key dopo verrà usata per cifrare il messaggio e si avra cosi una crittografia ibrida.
+      funzione hash e questa key dopo verrà usata per cifrare il messaggio e si avra cosi una crittografia ibrida. I protocolli piu usati sono il
+      <b>RSA</b> e il <b>diffie hellman</b> . <br />
+      Per quanto riguarda la sicuezza del diffie hellman si basa sulla probabilità che non esiste
+      <b>nessun algoritmo efficiente che riesce a calcolare g^ed</b> dato g dato g^e e g^d, un modo per calcolare e avendo d sarebbe calcolare la
+      <b>th root</b> di e e quindi calcolare d ma calcolare e è difficile perchè si basa sul problema del logaritmo disceto che si usa con numeri
+      interi all'interno di un campo finito
     </p>
   </section>
 </template>
