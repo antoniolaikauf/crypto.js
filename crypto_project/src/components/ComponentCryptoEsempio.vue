@@ -6,6 +6,7 @@ export default {
     return {
       key: "",
       key_hex: "",
+      key_crypto_js: "",
     };
   },
   methods: {
@@ -13,6 +14,8 @@ export default {
       for (const caracter of this.key) {
         this.key_hex += caracter.charCodeAt(0).toString(16);
       }
+      this.key_crypto_js = CryptoJS.enc.Hex.parse(this.key_hex);
+      console.log(this.key_crypto_js);
     },
   },
   mounted() {},
