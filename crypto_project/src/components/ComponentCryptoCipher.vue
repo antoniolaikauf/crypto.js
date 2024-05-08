@@ -57,10 +57,10 @@ export default {
         <b>KEY</b> deve essere di lunghezza adatta al cipher, es. un AES accetta key lunghe 128/192/256 bit, un DES 64. Se si guarda nell'esempio
         sopra, va messa al posto di "Secret Passphrase". Ovviamente, deve essere uguale sia per l'<b>encrypt</b> che per il <b>decrypt</b> se si usa
         una crittografia simmetrica. Nell'oggetto dell'encrypt, si vede la lunghezza della key con keysize, che specifica 8, quindi sarebbe 8*32=256,
-        ma sarebbe sbagliato; ritorna 8 essendo che nell'array words ci sono 8 parole anziché 4, come dovrebbe essere. Quindi, se ce ne sono 8, qui
-        ritorna lunghezza della key di 256 (non sono riuscito a trovare niente riguardante questo, probabilmente è una cosa di Crypto.js già impostata
-        così). Se si vuole vedere, si trova nella key array words, in questo caso la sua lunghezza è di sigBytes 32 byte (stessa cosa, non so se è
-        impostata ad avere sempre 8 parole e poi le seleziona in base alla lunghezza della key data da noi).
+        ma sarebbe sbagliato; ritorna 8 essendo che nell'array words ci sono 8 parole anziché 4, come dovrebbe essere. Quindi, se ce ne sono 8
+        dovrebbe ritornare una key di lunghezza 256 (non sono riuscito a trovare niente riguardante questo, probabilmente è una cosa di Crypto.js già
+        impostata così). Se si vuole vedere, si trova nella key array words, in questo caso la sua lunghezza è di sigBytes 32 byte (stessa cosa, non
+        so se è impostata ad avere sempre 8 parole e poi le seleziona in base alla lunghezza della key data da noi).
       </li>
       <li>
         <b>Testo cifrato</b> si trova nel ciphertext e dentro all'array words conterrà il testo cifrato. Ogni stringa dentro a questo array è di 32
@@ -71,7 +71,10 @@ export default {
         <b>IV</b> questo parametro viene usato solo se si usano modelli specifici, per esempio il CBC (cipher block chain) che utilizza un IV o un
         CTR, tutti e due disponibili in Crypto.js. Non so se si può implementare l'IV con il nonce tramite un metodo della libreria; tuttavia, l'IV
         deve essere della stessa lunghezza del messaggio, quindi del blocksize. Volendo, si può cambiare l'IV.
-        <a href="https://github.com/brix/crypto-js/issues/309">Link dove si cambia l'IV</a>.
+        <a href="https://github.com/brix/crypto-js/issues/293">La libreria prenderà i primi 16 bytes dell'iv </a>
+        messaggio dell'utente: <>Also IV vector size is not checked and user can pass more than 16 bytes IV to AES functions. But then crypto-js takes
+        only first 16 bytes<>
+        <a href="https://github.com/brix/crypto-js/issues/309">se si volesse cambiare IV quindi non farlo generare dalla libreria</a>.
         <b>Inoltre, ho notato che con questo metodo non si aggiunge il salt nel cipher</b>.
       </li>
       <li>
