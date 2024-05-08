@@ -61,13 +61,22 @@ export default {
       procedimento del <b>OAEP Optimal Asymmetric Encryption Padding</b> <br />
       <img src="../../public/img/oaep.png" alt="" class="img_oaep" /> <br />
       per il OAEP ci possono essere piu versioni per esempio il <b>OAEP+</b>
-      <a href="https://www.shoup.net/papers/oaep.pdf">(paper scientifico del OAEP+)</a> o il
-      <b>SAEP</b>
+      <a href="https://www.shoup.net/papers/oaep.pdf">(paper scientifico del OAEP+)</a> o il <b>SAEP</b> <br />
+      nell'immagine sarebbe la concatenazione di due blocchi
+      <b
+        >la parte di sinistra sarebbe il messaggio con bit di zero (la quantità di bits va in base allo standard che hai usato) la parte di destra
+        sarebbero bit randomici</b
+      >
+      nel primo processo si farebbe la xor tra la parte di sinistra e la funzione hash con input i bit randomici, la parte successiva sarebbe la xor
+      tra la funzione hash con input la parte precedentemente e i bit randomici questi due blocchi verranno messi dentro alla rsa function. la
+      lunghezza di questo output finale è di 2048 bits <br />
+      <img src="../../public/img/enc-dec.png" class="oaep_e_d" alt="" /> <br />
     </p>
   </section>
 </template>
 <style lang="scss" scoped>
-.img_oaep {
+.img_oaep,
+.oaep_e_d {
   width: 50%;
 }
 </style>
