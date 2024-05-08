@@ -70,7 +70,12 @@ export default {
         funzione RSA.</b
       >
       La lunghezza di questo output finale è di 2048 bit. <br />Se si volesse decifrare l'output, prima di tutto bisognerebbe utilizzare la funzione
-      inversa <img src="../../public/img/enc-dec.png" class="oaep_e_d" alt="" /> <br />
+      inversa per riottenere output della funzione precedente <b> la one way function</b> dopo si dovra dividere troncarlo in modo tale da ricavare i
+      due blocchi separatamente, una volta fatto si calcolano i bit randomici con la xor tra la hash function con dentro la parte destra dell'output
+      diviso e la parte di sinistra, in questo modo si calcolano i bit randomici, una volta fatto questo si decifra la parte di destra con la xor tra
+      la parte destra e la hash function dei bit randomici una volta ottenuto questa parte si divide in modo tale che si trova m e tutti i bit di 0
+      che si ha messo e se i bit di 0 ottenuti combaciano l'output sarà m se no rifiuta il testo cifrato e l'output sara la ⊥ <br />
+      <img src="../../public/img/enc-dec.png" class="oaep_e_d" alt="" /> <br />
     </p>
   </section>
 </template>
