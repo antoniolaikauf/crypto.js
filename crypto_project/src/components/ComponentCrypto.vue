@@ -62,15 +62,15 @@ export default {
       <img src="../../public/img/oaep.png" alt="" class="img_oaep" /> <br />
       per il OAEP ci possono essere piu versioni per esempio il <b>OAEP+</b>
       <a href="https://www.shoup.net/papers/oaep.pdf">(paper scientifico del OAEP+)</a> o il <b>SAEP</b> <br />
-      nell'immagine sarebbe la concatenazione di due blocchi
+      La parte sinistra dell'immagine precedentemente <b>sarebbe il messaggio con bit di zero</b> (la quantità di bit varia in base allo standard
+      utilizzato), mentre la parte di destra sarebbe composta <b>da bit randomici</b>.
       <b
-        >la parte di sinistra sarebbe il messaggio con bit di zero (la quantità di bits va in base allo standard che hai usato) la parte di destra
-        sarebbero bit randomici</b
+        >Nel primo processo, si farebbe la XOR tra la parte di sinistra e la funzione hash con input i bit randomici. La parte successiva sarebbe la
+        XOR tra la funzione hash, con input la parte precedentemente elaborata, e i bit randomici. Questi due blocchi verranno poi inseriti nella
+        funzione RSA.</b
       >
-      nel primo processo si farebbe la xor tra la parte di sinistra e la funzione hash con input i bit randomici, la parte successiva sarebbe la xor
-      tra la funzione hash con input la parte precedentemente e i bit randomici questi due blocchi verranno messi dentro alla rsa function. la
-      lunghezza di questo output finale è di 2048 bits <br />
-      <img src="../../public/img/enc-dec.png" class="oaep_e_d" alt="" /> <br />
+      La lunghezza di questo output finale è di 2048 bit. <br />Se si volesse decifrare l'output, prima di tutto bisognerebbe utilizzare la funzione
+      inversa <img src="../../public/img/enc-dec.png" class="oaep_e_d" alt="" /> <br />
     </p>
   </section>
 </template>
