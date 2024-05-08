@@ -6,19 +6,22 @@ export default {
     return {
       key: "",
       key_hex: "",
-      key_crypto_js: "",
+
       message: "",
       text_cipher: "",
     };
   },
   methods: {
     ciphertext() {
-      for (const caracter of this.key) {
-        this.key_hex += caracter.charCodeAt(0).toString(16); // si trasforma il testo in esadecimale
-      }
-      this.key_crypto_js = CryptoJS.enc.Hex.parse(this.key_hex); // si adatta la key esadecimale in modo tale che la libreria mossa usarlo
-      this.text_cipher = CryptoJS.AES.encrypt(this.message, this.key_crypto_js.toString(), {
-        // si cifra il testo
+      let salt = CryptoJS.lib.WordArray.random(128 / 8);
+      this.key_hex = CryptoJS.PBKDF2(this.key, salt, {
+        keySize: 128 / 8,
+      }).toString();
+
+      console.log(salt);
+      console.log(this.key_hex);
+      this.text_cipher = CryptoJS.AES.encrypt(this.message, this.key_hex, {
+        // si cifra il testo con cifrario CTR contatore randomizzato
         mode: CryptoJS.mode.CTR,
       });
       console.log(this.text_cipher);
@@ -35,7 +38,7 @@ export default {
 
     <button @click="ciphertext">coonverti</button>
 
-    <div>il testo cifrato è il seguente usando un cifrario a blocchi CTR{{ text_cipher.toString(16) }}</div>
+    <div>il testo cifrato è il seguente usando un cifrario a blocchi CTR {{ text_cipher }}</div>
   </section>
 </template>
 <style scoped lang="scss">

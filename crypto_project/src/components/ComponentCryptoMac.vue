@@ -10,6 +10,7 @@ export default {
     // console.log(key);
     //Encrypt Data
     var encryptObject = CryptoJS.AES.encrypt("ciao", key.toString());
+    // console.log(encryptObject);
 
     //Calculate HMAC
     // output del tag
