@@ -4,6 +4,7 @@ import componentCrypto_key from "./components/ComponentCryptoKey.vue";
 import componentCrypto_mac from "./components/ComponentCryptoMac.vue";
 import desProcedimento from "./components/ComponentCryptoNote.vue";
 import typeCypher from "./components/ComponentCrypto.vue";
+import EsCrypto_js from "./components/ComponentCryptoEsempio.vue";
 
 export default {
   components: {
@@ -12,6 +13,7 @@ export default {
     componentCrypto_mac,
     desProcedimento,
     typeCypher,
+    EsCrypto_js,
   },
 };
 </script>
@@ -24,8 +26,9 @@ export default {
           <a class="list-group-item list-group-item-action" href="#list-item-1">Chiavi</a>
           <a class="list-group-item list-group-item-action" href="#list-item-2">Cifrari</a>
           <a class="list-group-item list-group-item-action" href="#list-item-3">MAC</a>
-          <a class="list-group-item list-group-item-action" href="#list-item-5">Type</a>
           <a class="list-group-item list-group-item-action" href="#list-item-4">Note</a>
+          <a class="list-group-item list-group-item-action" href="#list-item-5">Type</a>
+          <a class="list-group-item list-group-item-action" href="#list-item-6">Esempio</a>
         </div>
       </div>
       <div class="col-12 col-md-10 mt-5">
@@ -46,11 +49,12 @@ export default {
               </ul>
             </div>
           </h3>
-          <div id="list-item-5"><typeCypher /></div>
           <div id="list-item-1"><componentCrypto_key /></div>
           <div id="list-item-2"><componentCrypto_cipher /></div>
           <div id="list-item-3"><componentCrypto_mac /></div>
           <div id="list-item-4"><desProcedimento /></div>
+          <div id="list-item-5"><typeCypher /></div>
+          <div id="list-item-6"><EsCrypto_js /></div>
         </div>
       </div>
       <div>
