@@ -132,8 +132,9 @@ export default {
   </section>
 </template>
 
-<style scoped>
-.read-the-docs {
-  color: #888;
+<style scoped lang="scss">
+@use './../style/partials/_partials.scss'as *;
+section{
+margin: $margin;
 }
 </style>

@@ -33,12 +33,11 @@ export default {
       anche un numero pari e riguarda la funzione <b>phi ϕ</b> ϕ(N), questo insieme sarebbe composto da tutti i valori coprimi tra 1 a phi-1 ED N Es.
       N=12 ϕ(12)={1,5,7,11}=4 e il teorema afferma che se x appartenente ad Zn (questo insieme {1,5,7,11}) è coprimo con N allora x^ϕ(N)=1 mod N,
       5^4=81=1 mod N. Invece per quanto riguarda calcolare il numero che moltiplicato faccia 1 mod N si eleva ϕ-1 Es. p=12 Zn={1,5,7,11} a=5 quindi
-      x*a =1 modp, (a deve appartenere ad Zn) x*5=1 mod N 5^ϕ-1=5^3=125=5mod N quindi x sarà 5 5*5=250 1 mod N.
-      <!-- INIZIO DA QUA -->
-      In crittografia asimmetrica, i vari algoritmi condividono il concetto di utilizzo di <b>funzioni one-way</b>, che sono facili da calcolare in
-      una direzione ma difficili da invertire senza informazioni aggiuntive. Per cifrare un messaggio, si usa la chiave pubblica e il messaggio stesso
-      come input, e si produce un messaggio cifrato questo sarebbe l'output della funzione one-way. Questo messaggio cifrato, non può essere decifrato
-      facilmente senza l'uso della corrispondente chiave privata, che funge da funzione inversa nel processo di decifratura. <br />
+      x*a =1 modp, (a deve appartenere ad Zn) x*5=1 mod N 5^ϕ-1=5^3=125=5mod N quindi x sarà 5 5*5=250 1 mod N. In crittografia asimmetrica, i vari
+      algoritmi condividono il concetto di utilizzo di <b>funzioni one-way</b>, che sono facili da calcolare in una direzione ma difficili da
+      invertire senza informazioni aggiuntive. Per cifrare un messaggio, si usa la chiave pubblica e il messaggio stesso come input, e si produce un
+      messaggio cifrato questo sarebbe l'output della funzione one-way. Questo messaggio cifrato, non può essere decifrato facilmente senza l'uso
+      della corrispondente chiave privata, che funge da funzione inversa nel processo di decifratura. <br />
       <b>Durante la pratica non si deve fare direttamente sul testo in chiaro questo procedimento</b>, ma si usa per calcolare poi una key tramite una
       funzione hash e questa key dopo verrà usata per cifrare il messaggio e si avra cosi una crittografia ibrida. I protocolli piu usati sono il
       <b>RSA</b> e il <b>diffie hellman</b> . <br />
@@ -80,8 +79,12 @@ export default {
   </section>
 </template>
 <style lang="scss" scoped>
-.img_oaep,
-.oaep_e_d {
-  width: 50%;
+@use "./../style/partials/_partials.scss" as *;
+section {
+  margin: $margin;
+  .img_oaep,
+  .oaep_e_d {
+    width: 50%;
+  }
 }
 </style>

@@ -98,11 +98,14 @@ export default {
   </section>
 </template>
 
-<style scoped>
-.img_key {
-  width: 50%;
+<style lang="scss" scoped>
+@use "./../style/partials/_partials.scss" as *;
+section {
+  margin: $margin;
+  .img_key {
+    width: 50%;
+  }
 }
-
 @media all and (max-width: 700px) {
   .img_key {
     width: 100%;

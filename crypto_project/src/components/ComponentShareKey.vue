@@ -26,4 +26,9 @@ export default {
     </p>
   </section>
 </template>
-<style></style>
+<style lang="scss" scoped>
+@use "./../style/partials/_partials.scss" as *;
+section {
+  margin: $margin;
+}
+</style>
