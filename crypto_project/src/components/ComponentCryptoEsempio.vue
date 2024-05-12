@@ -11,6 +11,9 @@ export default {
       text_cipher: "",
       pacchetto: "",
       tag: "",
+      tagDecryption: "",
+      textDescryption: "",
+      controlloTag: "",
     };
   },
   methods: {
@@ -28,18 +31,22 @@ export default {
         // archittettura CTR contatore randomizzato
         mode: CryptoJS.mode.CTR,
       }).toString();
-      // console.log(this.text_cipher);
       // procedura mac la key deve essere diversa da quella dell'encyption
       let saltMac = CryptoJS.lib.WordArray.random(128 / 32);
       let keyMac = CryptoJS.PBKDF2("frase", saltMac, {
         keySize: 128 / 32,
       }).toString();
       this.tag = CryptoJS.HmacMD5(this.text_cipher, keyMac).toString();
-      // console.log(tag);
-
       // concatenazione
-      this.pacchetto = tag + this.text_cipher;
-      console.log(this.pacchetto);
+      this.pacchetto = this.tag + this.text_cipher;
+
+      this.tagDecryption = this.pacchetto.substring(0, 32);
+      this.textDescryption = this.pacchetto.substring(32);
+
+      this.controlloTag = CryptoJS.HmacMD5(this.textDescryption, keyMac).toString();
+      if (this.controlloTag === this.tagDecryption)
+        alert(`il tag ottenuto ${this.tagDecryption} ed è uguale a ${this.controlloTag} quindi è corretto`);
+      else alert(`il tag ottenuto ${this.tagDecryption} ed non è uguale a ${this.controlloTag} quindi è sbagliato `);
     },
   },
   mounted() {},
@@ -55,7 +62,7 @@ export default {
 
     <div>Il testo cifrato è il seguente usando un cifrario a blocchi CTR {{ text_cipher }}</div>
     <div>Il tag è il seguente usando il HMAC {{ tag }}</div>
-    <div>Il pacchetto che riceverà il destinatario sara {{ this.pacchetto }}</div>
+    <div>Il pacchetto che riceverà il destinatario sara {{ pacchetto }}</div>
   </section>
 </template>
 <style scoped lang="scss">
