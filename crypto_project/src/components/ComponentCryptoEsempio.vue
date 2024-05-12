@@ -19,10 +19,13 @@ export default {
       controlloTag: "",
       textDecription: "", // testo decifrato
       messageDecrypt: "",
+
+      comparsa: false, // variabile per comparsa testo
     };
   },
   methods: {
     ciphertext() {
+      this.comparsa = true;
       // se non si inserisce l'iv lo metterà di default la libreria
       // var iv = CryptoJS.enc.Hex.parse("101112131415161718191a1b1c1d1e1f"); IV FISSO COSA SBAGLIATA PERCHè IV DEVE ESSERE RANDOMICO E OGNI VOLTA CHE SI CIFRA UN MESSAGGIO NON DEVE ESSERE MAI STATO USATO QUEL IV
       let saltEncyption = CryptoJS.lib.WordArray.random(128 / 32); //generazione sale per dare randomicità
@@ -70,10 +73,12 @@ export default {
     <div>Inserisci una key <input type="text" v-model="key" /></div>
     <div>Inserisci il messaggio <input type="text" v-model="message" /></div>
     <button @click="ciphertext">coonverti</button>
-    <div>Il testo cifrato è il seguente usando un cifrario a blocchi CTR {{ textCipher }}</div>
-    <div>Il tag è il seguente usando il HMAC {{ tag }}</div>
-    <div>Il pacchetto che riceverà il destinatario sara {{ pacchetto }}</div>
-    <div>il messaggio che hai decifrato è {{ messageDecrypt }}</div>
+    <div v-if="comparsa">
+      <div>Il testo cifrato è il seguente usando un cifrario a blocchi CTR {{ textCipher }}</div>
+      <div>Il tag è il seguente usando il HMAC {{ tag }}</div>
+      <div>Il pacchetto che riceverà il destinatario sara {{ pacchetto }}</div>
+      <div>il messaggio che hai decifrato è: {{ messageDecrypt }}</div>
+    </div>
   </section>
 </template>
 <style scoped lang="scss">
