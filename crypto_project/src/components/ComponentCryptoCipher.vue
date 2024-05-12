@@ -14,13 +14,13 @@ export default {
     this.salt = CryptoJS.lib.WordArray.random(128 / 8);
     this.hexString = CryptoJS.PBKDF2("ciao", this.salt, { keySize: 128 / 32 }).toString();
     this.hexString2 = CryptoJS.PBKDF2("ciao", this.salt, { keySize: 128 / 32 }).toString();
-    console.log(this.hexString, this.hexString2);
+    // console.log(this.hexString, this.hexString2);
 
     // var encrypted = CryptoJS.AES.encrypt("Message", this.hexString.toString());
     var encrypted = CryptoJS.AES.encrypt("Message", this.hexString);
     var decrypted = CryptoJS.AES.decrypt(encrypted, this.hexString2);
-    console.log(encrypted);
-    console.log(decrypted.toString(CryptoJS.enc.Utf8));
+    // console.log(encrypted);
+    // console.log(decrypted.toString(CryptoJS.enc.Utf8));
 
     // const iv = { words: [0, 0, 0, 0], sigBytes: 16 };
     // let code = CryptoJS.AES.encrypt("message", CryptoJS.enc.Utf8.parse("your secret key"), { iv });

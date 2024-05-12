@@ -9,11 +9,13 @@ export default {
 
       message: "",
       text_cipher: "",
-      pachetto: "",
+      pacchetto: "",
+      tag: "",
     };
   },
   methods: {
     ciphertext() {
+      // se non si inserisce l'iv lo metterà di default la libreria
       // var iv = CryptoJS.enc.Hex.parse("101112131415161718191a1b1c1d1e1f"); IV FISSO COSA SBAGLIATA PERCHè IV DEVE ESSERE RANDOMICO E OGNI VOLTA CHE SI CIFRA UN MESSAGGIO NON DEVE ESSERE MAI STATO USATO QUEL IV
       let saltEncyption = CryptoJS.lib.WordArray.random(128 / 32); //generazione sale per dare randomicità
       this.key_hex_encyption = CryptoJS.PBKDF2(this.key, saltEncyption, {
@@ -25,19 +27,19 @@ export default {
         // cifratura a blocchi usando un AES
         // archittettura CTR contatore randomizzato
         mode: CryptoJS.mode.CTR,
-        iv: iv,
-      });
-      console.log(this.text_cipher);
+      }).toString();
+      // console.log(this.text_cipher);
       // procedura mac la key deve essere diversa da quella dell'encyption
       let saltMac = CryptoJS.lib.WordArray.random(128 / 32);
       let keyMac = CryptoJS.PBKDF2("frase", saltMac, {
         keySize: 128 / 32,
       }).toString();
-      console.log(keyMac);
+      this.tag = CryptoJS.HmacMD5(this.text_cipher, keyMac).toString();
+      // console.log(tag);
 
       // concatenazione
-
-    
+      this.pacchetto = tag + this.text_cipher;
+      console.log(this.pacchetto);
     },
   },
   mounted() {},
@@ -51,7 +53,9 @@ export default {
 
     <button @click="ciphertext">coonverti</button>
 
-    <div>il testo cifrato è il seguente usando un cifrario a blocchi CTR {{ text_cipher }}</div>
+    <div>Il testo cifrato è il seguente usando un cifrario a blocchi CTR {{ text_cipher }}</div>
+    <div>Il tag è il seguente usando il HMAC {{ tag }}</div>
+    <div>Il pacchetto che riceverà il destinatario sara {{ this.pacchetto }}</div>
   </section>
 </template>
 <style scoped lang="scss">
